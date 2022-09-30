@@ -1,5 +1,5 @@
 {
-  "name": "js-heroku",
+  "name": "app.js",
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AndoniRoque/node-js-heroku.gits"
+    "url": "git+https://github.com/AndoniRoque/node-js-heroku.gits.git"
   },
   "author": "",
   "license": "ISC",
@@ -16,10 +16,10 @@
     "url": "https://github.com/AndoniRoque/node-js-heroku/issues"
   },
   "homepage": "https://github.com/AndoniRoque/node-js-heroku#readme",
-  "description": "",
   "dependencies": {
     "axios": "^0.27.2",
     "dotenv": "^16.0.2",
     "express": "^4.18.1"
-  }
+  },
+  "description": ""
 }
