@@ -1,32 +1,28 @@
 const express = require('express');
+const cors = require('cors')
 
 class Server {
     constructor() {
         this.app = express();
+        this.middleware();
         this.router();
         this.port = process.env.PORT;
     }
 
+    middleware()  {
+        // cors
+        this.app.use(cors());
+        // para usar una carpeta publica.
+        // Una vez configurada la carpeta publica, la ruta raiz deja de funcionar / la omite
+        this.app.use(express.static('public'));
+    }
+
     router() {
-        this.app.get('/', (req, res) => {
-            res.send('HOME API!')
-        })
-        
-        this.app.get('/populares', (req, res) => {
-            // Make a request for a user witha  give ID
-            axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${api_key}&language=en-US&page=1`)
-            .then((response)=>{
-                // handle success
-                console.log(response.status);
-                console.group(response.data);
-                res.json(response.data);
-            }).catch(
-                (error) => console.log(error)
-            )
-        })
+        this.app.use('/api/v1/peliculas', require('../routes/peliculas'));
+
 
         this.app.all('*', (req, res) => {
-            res.send('404 faefaefa')
+            res.send('<h1> 404 </h1>')
         })
     }
 
