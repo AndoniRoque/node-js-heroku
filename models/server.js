@@ -20,18 +20,16 @@ class Server {
     router() {
         this.app.use('/api/v1/nasa', require('../routes/nasa'));
 
-
         this.app.all('*', (req, res) => {
-            res.send('<h1> 404 </h1>')
+            res.status(404);
         })
     } 
 
     listen() {
         this.app.listen(this.port, () => {
-            console.log(`Example app listening on port ${this.port}`)
+            console.log(`Example app listening on port ${this.port}`);
         })
     }
 }
-
 // Exporto lo que quiero que el usuario pueda ver.
 module.exports = Server; 

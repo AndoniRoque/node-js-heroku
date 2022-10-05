@@ -8,6 +8,6 @@ router.get('/pictures', getPictures);
 
 router.get('/picture/:date', getPictureByDate);  
 
-router.get('/pictures_range/', getPicturesByDateRange);
+router.get('/pictures_range', getPicturesByDateRange);
 
 module.exports = router;

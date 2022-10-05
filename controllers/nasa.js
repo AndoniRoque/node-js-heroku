@@ -8,7 +8,7 @@ const getPictures = (req = request, res = response) => {
             res.status(200).json(response.data)
         })
         .catch((err) => {
-            res.send('ERROR');
+            res.status(404);
         })
 }
 
@@ -18,23 +18,29 @@ const getPictureByDate = (req = request, res = response) => {
             res.status(200).json(response.data);
         })
         .catch((err) => {
-
-            res.send('ERROR');
+            res.status(406).json({
+                msg: 'Al parecer las fechas ingresadas no dan un resultado aceptado.\
+                Por favor asegúrese de respetar el formato: YYYY-MM-DD.'
+            });
         })
 }
 
 const getPicturesByDateRange = (req = request, res = response)  => {
     console.log(req.query.start_date);
     console.log(req.query.end_date);
-    if (req.query.start_date > end_date) {
-        console.log("ERROR");
-    }
-    axios.get(`https://api.nasa.gov/planetary/apod?api_key=${key}&start_date=${req.query.start_date}&end_date=${req.query.end_date}`)     // Modificar
+    const {start_date, end_date} = req.query
+    axios.get(`https://api.nasa.gov/planetary/apod?api_key=${key}&start_date=${req.query.start_date}&end_date=${req.query.end_date}`)     
         .then((response) => {
             res.status(200).json(response.data);
         })
         .catch((err) => {
-            res.send('ERROR');
+            res.status(406).json({
+                msg: 'Al parecer las fechas ingresadas no dan un resultado aceptado. \
+                Por favor asegúrese de respetar el formato: YYYY-MM-DD. \
+                Asegúrese también de que la fecha de inicio sea anterior a la fecha de finalización.',
+                start_date,
+                end_date,
+            });
         })
 }
 
