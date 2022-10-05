@@ -11,3 +11,5 @@ En esta applicación se pueden consultar a través de la raiz /api/v1/nasa:
  - /pictures_range?start_date=[fecha_inicio]&end_date=[fecha_final] -> Un rango de fotografias diarias entre dos fechas especificadas, respetando el formato YYYY-MM-DD para ambas fechas.
  
  Para realizar consultas se requiere de una api key que puede generarse aqui: https://api.nasa.gov/
+
+Documentación POSTMAN: https://documenter.getpostman.com/view/19314765/2s83zdwRsp
