@@ -21,6 +21,7 @@ class Server {
         this.app.use('/api/v1/nasa', require('../routes/nasa'));
 
         this.app.all('*', (req, res) => {
+            //Estandarizar formatos de respuesta/salida
             res.status(404);
         })
     } 
